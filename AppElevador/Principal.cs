@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace AppElevador
 {
-   
+
     public partial class TelaPrincipal : Form
     {
 
@@ -26,27 +26,34 @@ namespace AppElevador
                 this.Situacao = "Parado";
             }
 
-            public void MudaAndar()
+            public void setAndar(int andar)
             {
-                if (Andar == 0)
+                this.Andar = andar;
+
+            }
+
+            public async void mudaAndar(int andar, TextBox txtAndar, TextBox txtStatus)
+            {
+                if (Andar < andar)
                 {
-                    for (int i = 0; i <= 4; i++)
+                    for (int i = Andar; i <= andar; i++)
                     {
-
+                        txtStatus.Text = "Subindo";
+                        txtAndar.Text = i.ToString();
+                        await Task.Delay(1000);
                     }
-                } else if (Andar == 1)
-                {
-
-                } else if (Andar == 2)
-                {
-
-                } else if (Andar == 3)
-                {
-
-                } else if (Andar == 4)
-                {
-
                 }
+                else
+                {
+                    for (int i = Andar; i >= andar; i--)
+                    {
+                        txtStatus.Text = "Descendo";
+                        txtAndar.Text = i.ToString();
+                        await Task.Delay(1000);
+                    }
+                }
+
+                txtStatus.Text = "Parado";
             }
 
             public int GetAndar()
@@ -59,44 +66,101 @@ namespace AppElevador
                 return Situacao;
             }
 
-            public void SetAndar(int andar)
-            {
-                Andar = andar;
-            }
 
-            public void SetSituacao(string situacao)
-            {
-                Situacao = "situacao";
-            }
         }
 
+        Elevador elevador;
 
         public TelaPrincipal()
         {
             InitializeComponent();
 
-            Elevador elevador = new Elevador();
-
-            //elevador.SetAndar(4);
-
+            elevador = new Elevador();
 
             AndarAtual.Text = elevador.GetAndar().ToString();
             SituacaoAtual.Text = elevador.GetSituacao().ToString();
-            
-            if (AndarAtual.Text == "0")
-            {
-                for (int i = 0; i <= 4; i++)
-                {
-                    AndarAtual.Text = i.ToString();
-                    SituacaoAtual.Text = "subindo";
-                    Thread.Sleep(2000);
-                }
-            }
+
         }
+
+
 
         private void bot4_Click(object sender, EventArgs e)
         {
-           
+            elevador.mudaAndar(4, AndarAtual, SituacaoAtual);
+            elevador.setAndar(4);
+        }
+
+        private void bot3_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(3, AndarAtual, SituacaoAtual);
+            elevador.setAndar(3);
+        }
+
+        private void bot2_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(2, AndarAtual, SituacaoAtual);
+            elevador.setAndar(2);
+        }
+
+        private void bot1_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(1, AndarAtual, SituacaoAtual);
+            elevador.setAndar(1);
+        }
+
+        private void bot0_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(0, AndarAtual, SituacaoAtual);
+            elevador.setAndar(0);
+        }
+
+        private void botDesce4_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(4, AndarAtual, SituacaoAtual);
+            elevador.setAndar(4);
+        }
+
+        private void botSobe0_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(0, AndarAtual, SituacaoAtual);
+            elevador.setAndar(0);
+        }
+
+        private void botSobe3_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(3, AndarAtual, SituacaoAtual);
+            elevador.setAndar(3);
+        }
+
+        private void botDesce3_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(3, AndarAtual, SituacaoAtual);
+            elevador.setAndar(3);
+        }
+
+        private void botSobe2_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(2, AndarAtual, SituacaoAtual);
+            elevador.setAndar(2);
+        }
+
+        private void botDesce2_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(2, AndarAtual, SituacaoAtual);
+            elevador.setAndar(2);
+        }
+
+        private void botSobe1_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(1, AndarAtual, SituacaoAtual);
+            elevador.setAndar(1);
+        }
+
+        private void botDesce1_Click(object sender, EventArgs e)
+        {
+            elevador.mudaAndar(1, AndarAtual, SituacaoAtual);
+            elevador.setAndar(1);
         }
     }
 }
+
