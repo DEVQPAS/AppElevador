@@ -14,62 +14,10 @@ namespace AppElevador
 
     public partial class TelaPrincipal : Form
     {
-
-        class Elevador
-        {
-            private int Andar;
-            private string Situacao;
-
-            public Elevador()
-            {
-                this.Andar = 0;
-                this.Situacao = "Parado";
-            }
-
-            public void setAndar(int andar)
-            {
-                this.Andar = andar;
-
-            }
-
-            public async void mudaAndar(int andar, TextBox txtAndar, TextBox txtStatus)
-            {
-                if (Andar < andar)
-                {
-                    for (int i = Andar; i <= andar; i++)
-                    {
-                        txtStatus.Text = "Subindo";
-                        txtAndar.Text = i.ToString();
-                        await Task.Delay(1000);
-                    }
-                }
-                else
-                {
-                    for (int i = Andar; i >= andar; i--)
-                    {
-                        txtStatus.Text = "Descendo";
-                        txtAndar.Text = i.ToString();
-                        await Task.Delay(1000);
-                    }
-                }
-
-                txtStatus.Text = "Parado";
-            }
-
-            public int GetAndar()
-            {
-                return Andar;
-            }
-
-            public string GetSituacao()
-            {
-                return Situacao;
-            }
-
-
-        }
-
+        // Declara objeto elevador
         Elevador elevador;
+
+        // Inicia tela principal do forms
 
         public TelaPrincipal()
         {
@@ -82,7 +30,7 @@ namespace AppElevador
 
         }
 
-
+        // Aciona comandos ao clique dos botões do forms
 
         private void bot4_Click(object sender, EventArgs e)
         {
